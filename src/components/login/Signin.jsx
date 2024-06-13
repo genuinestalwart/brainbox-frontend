@@ -11,6 +11,7 @@ import { Google } from "@mui/icons-material";
 import { useForm } from "react-hook-form";
 import { fields } from "@/utilities/Signin";
 import InputField from "@/components/shared/InputField";
+import StyledButton from "@/components/shared/StyledButton";
 
 const Signin = ({ authing, handleGoogle, loading, onSubmit, setLogin }) => {
 	const {
@@ -52,15 +53,12 @@ const Signin = ({ authing, handleGoogle, loading, onSubmit, setLogin }) => {
 					mx='auto'
 					textAlign='center'
 					width='80%'>
-					<Button
-						color='accent'
+					<StyledButton
 						disabled={authing || loading}
 						fullWidth
-						sx={{ fontWeight: 600 }}
-						type='submit'
-						variant='contained'>
+						type='submit'>
 						Login
-					</Button>
+					</StyledButton>
 
 					<Divider>OR</Divider>
 

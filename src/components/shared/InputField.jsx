@@ -15,12 +15,14 @@ const InputField = ({
 			defaultValue={field.defaultValue}
 			disabled={disabled}
 			error={errors[field.id] ? true : false}
-			fullWidth={field.fullWidth}
+			fullWidth
 			helperText={errors[field.id] ? field.helperText : ""}
 			id={field.id}
 			inputProps={field.inputProps}
 			label={field.label}
 			margin='normal'
+			minRows={field.minRows}
+			multiline={field.multiline}
 			onChange={(e) => onChange(e.target.value)}
 			placeholder={field.placeholder}
 			{...register(field.id, field.validation)}

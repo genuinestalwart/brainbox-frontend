@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import StyledButton from "@/components/shared/StyledButton";
 const links = [
 	{ path: "/", text: "Home" },
 	{ path: "/courses", text: "Courses" },
@@ -34,7 +35,7 @@ const Header = () => {
 				</Typography>
 			</Box>
 
-			<Box alignItems='center' display='flex' gap={4}>
+			<Box alignItems='center' component='nav' display='flex' gap={4}>
 				{links.map((item, i) => (
 					<NavLink
 						className={({ isActive }) =>
@@ -50,34 +51,43 @@ const Header = () => {
 					</NavLink>
 				))}
 
+				{user && (
+					<NavLink
+						className={({ isActive }) =>
+							`font-semibold ${
+								isActive
+									? "text-accent"
+									: "hover:underline underline-offset-2"
+							}`
+						}
+						to='/account'>
+						Dashboard
+					</NavLink>
+				)}
+
 				{loading ? (
 					<CircularProgress color='accent' />
 				) : user ? (
-					<Button
+					<StyledButton
 						color='error'
+						endIcon={<Logout />}
 						onClick={logOut}
 						sx={{
 							boxShadow: 0,
 							color: "primary.main",
-							fontWeight: 600,
 							"&:hover": { boxShadow: 0 },
-						}}
-						variant='contained'>
-						<span className='hidden md:inline'>Log Out</span>
-						<Logout sx={{ display: { md: "none" } }} />
-					</Button>
+						}}>
+						Log Out
+					</StyledButton>
 				) : (
 					<Link className='block' to='/login'>
-						<Button
-							color='accent'
+						<StyledButton
 							sx={{
 								boxShadow: 0,
-								fontWeight: 600,
 								"&:hover": { boxShadow: 0 },
-							}}
-							variant='contained'>
+							}}>
 							Login
-						</Button>
+						</StyledButton>
 					</Link>
 				)}
 			</Box>

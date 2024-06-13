@@ -5,6 +5,8 @@ import CoursesPage from "@/pages/courses";
 import LoginPage from "@/pages/login";
 import DashLayout from "@/layouts/DashLayout";
 import DashboardPage from "@/pages/account/dashboard";
+import MyCoursesPage from "@/pages/account/my-courses";
+import PrivateRoute from "@/routes/PrivateRoute";
 
 export const router = createBrowserRouter([
 	{
@@ -27,11 +29,19 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: "/account",
-		element: <DashLayout />,
+		element: (
+			<PrivateRoute>
+				<DashLayout />
+			</PrivateRoute>
+		),
 		children: [
 			{
 				index: true,
 				element: <DashboardPage />,
+			},
+			{
+				path: "my-courses",
+				element: <MyCoursesPage />,
 			},
 		],
 	},

@@ -1,13 +1,23 @@
-import Header from "@/components/shared/Header";
+import Sidebar from "@/components/shared/Sidebar";
+import { Box } from "@mui/material";
+import { grey } from "@mui/material/colors";
 import { Outlet } from "react-router-dom";
 
 const DashLayout = () => {
 	return (
-		<>
-			<Header />
+		<Box component='main' display={{ md: "flex" }} height={{ md: "100vh" }}>
+			<Sidebar />
 
-			<Outlet />
-		</>
+			<Box
+				bgcolor={grey[50]}
+				component='section'
+				flexGrow={1}
+				height={{ md: "100%" }}
+				p={8}
+				sx={{ overflowY: { md: "auto" } }}>
+				<Outlet />
+			</Box>
+		</Box>
 	);
 };
 

@@ -1,7 +1,6 @@
 export const fields = [
 	{
 		autoComplete: "email",
-		fullWidth: true,
 		id: "email",
 		helperText: "",
 		label: "Email Address",
@@ -13,7 +12,6 @@ export const fields = [
 	},
 	{
 		autoComplete: "new-password",
-		fullWidth: true,
 		id: "password",
 		helperText: "",
 		label: "Password",

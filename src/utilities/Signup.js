@@ -1,14 +1,12 @@
 export const fields = [
 	{
 		autoComplete: "name",
-		fullWidth: true,
 		id: "name",
 		label: "Username",
 		validation: { maxLength: 32, minLength: 3 },
 	},
 	{
 		autoComplete: "email",
-		fullWidth: true,
 		id: "email",
 		label: "Email Address",
 		type: "email",
@@ -19,7 +17,6 @@ export const fields = [
 	},
 	{
 		autoComplete: "new-password",
-		fullWidth: true,
 		id: "password",
 		label: "Password",
 		type: "password",
