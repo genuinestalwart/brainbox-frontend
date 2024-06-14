@@ -24,7 +24,7 @@ const Signin = ({ authing, handleGoogle, loading, onSubmit, setLogin }) => {
 		<Card
 			component='form'
 			onSubmit={handleSubmit(onSubmit)}
-			sx={{ maxWidth: "40%", mx: "auto" }}>
+			sx={{ maxWidth: { xs: "90%", md: "40%" }, mx: "auto" }}>
 			<CardContent>
 				<Typography
 					fontWeight={600}

@@ -1,14 +1,16 @@
+import Hero from "@/components/home/Hero";
+import { Box } from "@mui/material";
 import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
 	return (
-		<main>
+		<Box component='main'>
 			<Helmet>
 				<title>Brainbox | Home</title>
 			</Helmet>
 
-			<div>Home</div>
-		</main>
+			<Hero />
+		</Box>
 	);
 };
 

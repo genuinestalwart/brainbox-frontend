@@ -7,24 +7,26 @@ import DashLayout from "@/layouts/DashLayout";
 import DashboardPage from "@/pages/account/dashboard";
 import MyCoursesPage from "@/pages/account/my-courses";
 import PrivateRoute from "@/routes/PrivateRoute";
+import CoursePage from "@/pages/courses/course";
+import EnrolledCoursePage from "@/pages/account/enrolled-courses";
+import NotFound from "@/components/shared/NotFound";
 
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <RootLayout />,
 		children: [
+			{ index: true, element: <HomePage /> },
+			{ path: "courses", element: <CoursesPage /> },
 			{
-				index: true,
-				element: <HomePage />,
+				path: "courses/:id",
+				element: (
+					<PrivateRoute>
+						<CoursePage />
+					</PrivateRoute>
+				),
 			},
-			{
-				path: "courses",
-				element: <CoursesPage />,
-			},
-			{
-				path: "login",
-				element: <LoginPage />,
-			},
+			{ path: "login", element: <LoginPage /> },
 		],
 	},
 	{
@@ -35,14 +37,10 @@ export const router = createBrowserRouter([
 			</PrivateRoute>
 		),
 		children: [
-			{
-				index: true,
-				element: <DashboardPage />,
-			},
-			{
-				path: "my-courses",
-				element: <MyCoursesPage />,
-			},
+			{ index: true, element: <DashboardPage /> },
+			{ path: "my-courses", element: <MyCoursesPage /> },
+			{ path: "enrolled-courses", element: <EnrolledCoursePage /> },
 		],
 	},
+	{ path: "*", element: <NotFound /> },
 ]);

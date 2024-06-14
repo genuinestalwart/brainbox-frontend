@@ -15,6 +15,8 @@
 		"@fontsource/mukta": "^5.0.20",
 		"@mui/icons-material": "^5.15.19",
 		"@mui/material": "^5.15.19",
+		"@stripe/react-stripe-js": "^2.7.1",
+		"@stripe/stripe-js": "^3.5.0",
 		"@tanstack/react-query": "^5.44.0",
 		"axios": "^1.7.2",
 		"firebase": "^10.12.2",

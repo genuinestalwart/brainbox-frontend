@@ -1,41 +1,57 @@
 import { AuthContext } from "@/providers/AuthProvider";
-import { Logout } from "@mui/icons-material";
-import { Box, Button, Typography } from "@mui/material";
-import { useContext } from "react";
+import { Logout, Menu } from "@mui/icons-material";
+import { Box, IconButton, Typography } from "@mui/material";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import StyledButton from "@/components/shared/StyledButton";
+import NavDrawer from "@/components/shared/NavDrawer";
 const links = [
 	{ path: "/", text: "Home" },
 	{ path: "/courses", text: "Courses" },
 	{ path: "/account", text: "Dashboard" },
 	{ path: "/account/my-courses", text: "My Courses" },
+	{ path: "/account/enrolled-courses", text: "Enrolled Courses" },
 ];
 
 const Sidebar = () => {
+	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const { logOut } = useContext(AuthContext);
 
 	return (
 		<Box
 			component='header'
 			height='100%'
-			maxWidth='30ch'
+			maxWidth={{ md: "30ch" }}
 			width={{ xs: "100%", md: "30%" }}>
 			<Box
 				alignItems='center'
-				className='h-16'
 				display='flex'
-				gap={2}
-				justifyContent='center'>
-				<img alt='logo' className='h-12 w-auto' src='/logo.png' />
+				justifyContent='space-between'>
+				<Box
+					alignItems='center'
+					className='h-16'
+					display='flex'
+					gap={2}
+					justifyContent='center'>
+					<img alt='logo' className='h-12 w-auto' src='/logo.png' />
 
-				<Typography fontWeight={600} variant='h4'>
-					<span className='text-accent'>Brain</span>box
-				</Typography>
+					<Typography fontWeight={600} variant='h4'>
+						<span className='text-accent'>Brain</span>box
+					</Typography>
+				</Box>
+
+				<IconButton
+					aria-label='open drawer'
+					color='inherit'
+					onClick={() => setSidebarOpen(!sidebarOpen)}
+					sx={{ display: { md: "none" } }}>
+					<Menu fontSize='large' />
+				</IconButton>
 			</Box>
 
 			<Box
 				component='nav'
-				display='flex'
+				display={{ xs: "none", md: "flex" }}
 				flexDirection='column'
 				gap={2}
 				mx='auto'
@@ -66,6 +82,11 @@ const Sidebar = () => {
 					Log Out
 				</StyledButton>
 			</Box>
+
+			<NavDrawer
+				navbarOpen={sidebarOpen}
+				setNavbarOpen={setSidebarOpen}
+			/>
 		</Box>
 	);
 };

@@ -1,13 +1,30 @@
-import { Card, CardActions, CardContent, Typography } from "@mui/material";
+import {
+	Card,
+	CardActions,
+	CardContent,
+	Chip,
+	Typography,
+} from "@mui/material";
 
-const CourseCard = ({ cardActions, item }) => {
-	const { description, instructors, price, title } = item;
+const CourseCard = ({ cardActions, hidePrice, item }) => {
+	const { description, price, title } = item;
 	return (
-		<Card>
+		<Card
+			sx={{
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "space-between",
+			}}>
 			<CardContent>
-				<Typography fontWeight={600} component='h2' variant='h5'>
+				<Typography
+					className='line-clamp-1'
+					fontWeight={600}
+					component='h2'
+					variant='h5'>
 					{title}
 				</Typography>
+
+				<hr className='mb-4 mt-2 w-full' />
 
 				<Typography
 					className='line-clamp-3'
@@ -17,8 +34,19 @@ const CourseCard = ({ cardActions, item }) => {
 				</Typography>
 			</CardContent>
 
-			<CardActions sx={{ justifyContent: "space-between", mb: 2, px: 4 }}>
-				<Typography variant='h5'>${price}</Typography>
+			<CardActions
+				sx={{
+					justifyContent: hidePrice ? "end" : "space-between",
+					mb: 2,
+					px: 4,
+				}}>
+				{!hidePrice && (
+					<Chip
+						className='font-bold'
+						color='accent'
+						label={`Price: $${price}`}
+					/>
+				)}
 				{cardActions}
 			</CardActions>
 		</Card>

@@ -13,7 +13,6 @@ const DashLayout = () => {
 				component='section'
 				flexGrow={1}
 				height={{ md: "100%" }}
-				p={8}
 				sx={{ overflowY: { md: "auto" } }}>
 				<Outlet />
 			</Box>
